@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional portfolio of Monika G, BCA student at Tumkur University. Aspiring software developer specializing in Python, C#.NET, databases, and web development. Explore academic records, projects, and certifications.">
+  <meta name="keywords" content="Monika G, Monika G Portfolio, BCA Student, Software Developer, Python, C# .NET, Web Development, Tumkur University">
+  <meta name="author" content="Monika G">
+  <title>Monika G | Professional Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Home-specific adjustments */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+    
+    .hero-desc {
+      max-width: 550px;
+      margin: 1.5rem 0 2.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-img-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+    
+    .hero-img-frame {
+      width: clamp(280px, 35vw, 380px);
+      height: clamp(280px, 35vw, 380px);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      background: var(--accent-gradient);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.35), var(--shadow-glow);
+      padding: 6px;
+      animation: morph-blob 8s ease-in-out infinite alternate, float-img 6s ease-in-out infinite;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+    
+    .hero-img-frame:hover {
+      box-shadow: 0 20px 45px rgba(20, 184, 166, 0.45), 0 0 40px rgba(20, 184, 166, 0.25);
+    }
+    
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    
+    @keyframes morph-blob {
+      0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+      50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
+      100% { border-radius: 60% 40% 60% 40% / 40% 50% 50% 60%; }
+    }
+    
+    @keyframes float-img {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    
+    .stats-section {
+      padding: 3rem 0;
+      background: rgba(12, 15, 23, 0.5);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.3rem;
+    }
+    
+    .stat-label {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Section Headers */
+    .section-title-wrapper {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .subtitle-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 30px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    /* Quick Skills */
+    .quick-skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    
+    .skill-teaser-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.6rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: var(--transition-smooth);
+    }
+    
+    .skill-teaser-badge:hover {
+      transform: translateY(-4px) scale(1.03);
+      border-color: var(--border-color-hover);
+      box-shadow: var(--shadow-glow);
+      background: var(--bg-card-hover);
+    }
+    
+    /* Featured Projects Layout */
+    .project-card-image {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      background: var(--bg-secondary);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .project-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: var(--transition-smooth);
+    }
+    
+    .card:hover .project-card-image img {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+    
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    
+    .project-tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(20, 184, 166, 0.08);
+      border: 1px solid rgba(20, 184, 166, 0.15);
+      border-radius: 12px;
+      color: var(--secondary);
+      font-weight: 500;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .project-link:hover {
+      color: var(--secondary);
+    }
+    
+    /* Contact Details side card */
+    .contact-info-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    
+    .info-text h4 {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .info-text p {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-top: 0.1rem;
+    }
+    
+    .success-alert {
+      display: none;
+      background: rgba(20, 184, 166, 0.1);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      color: var(--secondary);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating particles decorative background -->
+  <div class="blob blob-primary"></div>
+  <div class="blob blob-secondary"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="header" id="myHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="logoLink">MONIKA G.</a>
+      <button class="hamburger" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link active" id="homeLink">Home</a></li>
+        <li><a href="about.html" class="nav-link" id="aboutLink">About</a></li>
+        <li><a href="projects.html" class="nav-link" id="projectsLink">Projects</a></li>
+        <li><a href="education.html" class="nav-link" id="educationLink">Education</a></li>
+        <li><a href="certification.html" class="nav-link" id="certsLink">Certifications</a></li>
+        <li><a href="resume-view.html" class="nav-cta" id="resumeCta">View Resume</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="homeHero">
+    <div class="container grid-2">
+      <div class="hero-content animate-on-load">
+        <span class="hero-subtitle">Welcome to My Portfolio</span>
+        <h1>Hi, I'm <span class="gradient-text">Monika G</span></h1>
+        <h2 style="font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 500; color: var(--text-secondary); margin-top: 0.5rem;">
+          Aspiring Computer Applications Developer
+        </h2>
+        <p class="hero-desc">
+          Currently pursuing my <strong>Bachelor of Computer Applications (BCA)</strong> at Tumkur University. Driven to deploy robust, high-performance database architectures, elegant web platforms, and automated workflow scripts. Let's engineer digital products together.
+        </p>
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn btn-primary" id="exploreBtn">
+            Explore Projects
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="resume-view.html" class="btn btn-secondary" id="viewResumeBtn">
+            View Resume
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-img-wrapper animate-on-load delay-2">
+        <div class="hero-img-frame">
+          <img src="assets/profile.jpg" alt="Monika G Profile Picture" class="hero-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTICS COUNTER -->
+  <section class="stats-section" id="statsSection">
+    <div class="container grid-3">
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Semesters Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Technical Skills</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">71%</div>
+        <div class="stat-label">Peak PUC Score</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEASER SKILLS SECTION -->
+  <section class="scroll-reveal" id="teaserSkills" style="padding: 5rem 0;">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="subtitle-badge">Core Focus</span>
+        <h2 class="section-title">Areas of Expertise</h2>
+      </div>
+      <div class="quick-skills-container">
+        <div class="skill-teaser-badge">
+          <div class="card-icon" style="width:30px; height:30px; font-size: 0.9rem;">🐍</div>
+          Python Coding
+        </div>
+        <div class="skill-teaser-badge">
+          <div class="card-icon" style="width:30px; height:30px; font-size: 0.9rem;">💻</div>
+          C# .NET
+        </div>
+        <div class="skill-teaser-badge">
+          <div class="card-icon" style="width:30px; height:30px; font-size: 0.9rem;">🌐</div>
+          Web Development
+        </div>
+        <div class="skill-teaser-badge">
+          <div class="card-icon" style="width:30px; height:30px; font-size: 0.9rem;">🗄️</div>
+          Databases
+        </div>
+        <div class="skill-teaser-badge">
+          <div class="card-icon" style="width:30px; height:30px; font-size: 0.9rem;">📊</div>
+          Data Structures
+        </div>
+        <div class="skill-teaser-badge">
+          <div class="card-icon" style="width:30px; height:30px; font-size: 0.9rem;">📈</div>
+          MS Excel Automation
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="about.html" class="btn btn-secondary" id="moreSkillsBtn">
+          Learn More About Me
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="scroll-reveal" id="featuredProjects" style="background: rgba(12, 15, 23, 0.3); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="subtitle-badge">Selected Work</span>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+      <div class="grid-3">
+        <!-- Project 1 -->
+        <div class="card">
+          <div class="project-card-image">
+            <img src="assets/hero_graphic.png" alt="EduFlow E-Learning Portal Interface">
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">HTML/CSS</span>
+            <span class="project-tag">JS</span>
+            <span class="project-tag">SQL</span>
+          </div>
+          <h3 class="card-title">EduFlow Student Portal</h3>
+          <p style="font-size:0.95rem; margin-top:0.5rem;">
+            A responsive, feature-rich course portal layout and management structure leveraging basic relational databases to monitor student profiles and grades.
+          </p>
+          <a href="projects.html" class="project-link" id="projLink1">
+            Explore Project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="card">
+          <div class="project-card-image">
+            <img src="assets/hero_graphic.png" alt="Excel Analyzer Automation Interface">
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">OpenPyXL</span>
+            <span class="project-tag">Excel</span>
+          </div>
+          <h3 class="card-title">FinAnalytics Automation</h3>
+          <p style="font-size:0.95rem; margin-top:0.5rem;">
+            A lightweight automated pipeline built in Python to read, aggregate, and visualize high-volume financial data streams directly from MS Excel sheets.
+          </p>
+          <a href="projects.html" class="project-link" id="projLink2">
+            Explore Project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="card">
+          <div class="project-card-image">
+            <img src="assets/hero_graphic.png" alt="TaskVault C#.NET Desktop Application">
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">C#.NET</span>
+            <span class="project-tag">SQL Server</span>
+            <span class="project-tag">OOP</span>
+          </div>
+          <h3 class="card-title">TaskVault Manager</h3>
+          <p style="font-size:0.95rem; margin-top:0.5rem;">
+            A structured object-oriented C# system featuring secure authentication, local state management, and SQL Server hooks to plan and log software tasks.
+          </p>
+          <a href="projects.html" class="project-link" id="projLink3">
+            Explore Project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="projects.html" class="btn btn-primary" id="allProjectsBtn">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="scroll-reveal" id="contactSection" style="border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="subtitle-badge">Contact</span>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+      
+      <div class="grid-2">
+        <div class="contact-info-card">
+          <h3 style="margin-bottom: 0.5rem;">Let's discuss something great</h3>
+          <p style="margin-bottom: 1.5rem;">
+            I am always looking forward to discussing new developer opportunities, university collaborations, software architectures, or general technical support. Shoot me a line!
+          </p>
+          
+          <div class="info-item">
+            <div class="card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="info-text">
+              <h4>Email Me</h4>
+              <p><a href="mailto:gangadharmonika96@gmail.com">gangadharmonika96@gmail.com</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div class="info-text">
+              <h4>Call Me</h4>
+              <p><a href="tel:+919108701543">+91 91087 01543</a></p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="info-text">
+              <h4>Location</h4>
+              <p>Tumkur, Karnataka, India</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="success-alert" id="contactSuccess">
+            ✨ Thank you! Your message has been sent successfully. I will get back to you shortly!
+          </div>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" name="subject" class="form-control" placeholder="Project Inquiry" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea id="message" name="message" class="form-control" placeholder="Write your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;" id="sendBtn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>MONIKA G.</h4>
+          <p style="font-size: 0.95rem;">
+            Pursuing BCA | Aspiring Software Developer from Karnataka. Dedicated to creating high-efficiency backend pipelines, functional data architectures, and engaging web apps.
+          </p>
+          <div class="social-links">
+            <a href="mailto:gangadharmonika96@gmail.com" class="social-icon" aria-label="Mail">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+            <a href="tel:+919108701543" class="social-icon" aria-label="Phone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-primary);">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" id="footHome">Home</a></li>
+            <li><a href="about.html" id="footAbout">About</a></li>
+            <li><a href="projects.html" id="footProj">Projects</a></li>
+            <li><a href="education.html" id="footEduc">Education</a></li>
+            <li><a href="certification.html" id="footCerts">Certifications</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-primary);">Downloads</h4>
+          <ul class="footer-links">
+            <li><a href="assets/resume.docx" download id="footResume">Download Word Resume</a></li>
+            <li><a href="resume-view.html" id="footDigiResume">Print Digital Resume</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Monika G. All rights reserved.</p>
+        <p>Built with ❤️ &amp; Vanilla Web Technologies</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

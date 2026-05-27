@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View the professional tech certifications and courses completed by Monika G. Includes Python Programming, Web Development, and Database Management credentials.">
+  <meta name="keywords" content="Monika G Certifications, Python Certificate, Web Development Certificate, Database Certificate">
+  <meta name="author" content="Monika G">
+  <title>Certifications | Monika G</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Certifications-specific styling */
+    .certs-header {
+      padding-top: 130px;
+      padding-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .cert-badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.25rem 0.75rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      background: rgba(20, 184, 166, 0.08);
+      border: 1px solid rgba(20, 184, 166, 0.15);
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+    
+    .cert-card:hover .cert-badge {
+      background: var(--accent-gradient);
+      color: white;
+      border-color: transparent;
+    }
+    
+    .cert-issuer {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-top: 0.1rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    
+    .cert-desc {
+      font-size: 0.92rem;
+      margin-bottom: 1.8rem;
+      flex-grow: 1;
+    }
+    
+    .cert-btn {
+      width: 100%;
+      margin-top: auto;
+    }
+    
+    /* Mock certificate image alert */
+    .note-banner {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      max-width: 800px;
+      margin: 1.5rem auto 3rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .note-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    
+    .note-text p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background decorations -->
+  <div class="blob blob-primary" style="top: 15%; left: 5%;"></div>
+  <div class="blob blob-secondary" style="bottom: 15%; right: 5%;"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="logoLink">MONIKA G.</a>
+      <button class="hamburger" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link" id="homeLink">Home</a></li>
+        <li><a href="about.html" class="nav-link" id="aboutLink">About</a></li>
+        <li><a href="projects.html" class="nav-link" id="projectsLink">Projects</a></li>
+        <li><a href="education.html" class="nav-link" id="educationLink">Education</a></li>
+        <li><a href="certification.html" class="nav-link active" id="certsLink">Certifications</a></li>
+        <li><a href="resume-view.html" class="nav-cta" id="resumeCta">View Resume</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- CERTIFICATIONS HEADER -->
+  <section class="certs-header animate-on-load">
+    <div class="container">
+      <span class="subtitle-badge">Credentials &amp; Verification</span>
+      <h1 class="gradient-text">Certifications</h1>
+      <p style="max-width: 600px; margin: 1rem auto 0; font-size: 1.15rem;">
+        Professional development courses and skills validations I have earned alongside my university studies.
+      </p>
+      
+      <!-- Note Banner for Mock Uploads -->
+      <div class="note-banner">
+        <div class="note-icon">💡</div>
+        <div class="note-text" style="text-align: left;">
+          <p>
+            <strong>Note:</strong> Professional placeholder certificate templates have been loaded for preview. You can easily swap out these placeholders for your actual certificate files in the <code>assets/</code> directory at any time!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS GRID -->
+  <section style="padding: 1rem 0 7rem;">
+    <div class="container scroll-reveal">
+      <div class="grid-3">
+        
+        <!-- Cert 1 -->
+        <div class="card cert-card">
+          <span class="cert-badge">Coding &amp; Logic</span>
+          <h3>Python Programming Fundamentals</h3>
+          <div class="cert-issuer">
+            <span>🏆</span> Course Completion Certificate
+          </div>
+          <p class="cert-desc">
+            Validation of syntax mastery, functions, control loops, standard data structures (lists, dicts, tuples), basic object-oriented constructs, and file I/O operations in Python.
+          </p>
+          <button class="btn btn-primary cert-btn" data-cert-img="assets/certificate_placeholder.png" data-cert-title="Python Programming Fundamentals Certificate">
+            View Certificate
+          </button>
+        </div>
+        
+        <!-- Cert 2 -->
+        <div class="card cert-card">
+          <span class="cert-badge">Web Architecture</span>
+          <h3>Modern Web Development</h3>
+          <div class="cert-issuer">
+            <span>🏆</span> Course Completion Certificate
+          </div>
+          <p class="cert-desc">
+            Validation of modern semantic layout authoring via HTML5, flexible and responsive styles using CSS3 (Grid/Flexbox), and responsive DOM interaction scripting via ES6+ JavaScript.
+          </p>
+          <button class="btn btn-primary cert-btn" data-cert-img="assets/certificate_placeholder.png" data-cert-title="Modern Web Development Certificate">
+            View Certificate
+          </button>
+        </div>
+        
+        <!-- Cert 3 -->
+        <div class="card cert-card">
+          <span class="cert-badge">Database Design</span>
+          <h3>SQL &amp; Relational Databases</h3>
+          <div class="cert-issuer">
+            <span>🏆</span> Course Completion Certificate
+          </div>
+          <p class="cert-desc">
+            Validation of database engineering concepts, covering entity relationships, tables, key structures (primary/foreign keys), data retrieval querying, joining techniques, and schema building.
+          </p>
+          <button class="btn btn-primary cert-btn" data-cert-img="assets/certificate_placeholder.png" data-cert-title="SQL &amp; Relational Databases Certificate">
+            View Certificate
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP MODAL FOR DISPLAYING CERTIFICATE -->
+  <div class="modal" id="certModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">✕</button>
+      <div class="modal-img-container">
+        <img src="" alt="Certificate Image View" class="modal-img" id="modalImage">
+      </div>
+      <h3 class="modal-title" id="modalTitle">Certificate Title</h3>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>MONIKA G.</h4>
+          <p style="font-size: 0.95rem;">
+            Pursuing BCA | Aspiring Software Developer from Karnataka. Dedicated to creating high-efficiency backend pipelines, functional data architectures, and engaging web apps.
+          </p>
+          <div class="social-links">
+            <a href="mailto:gangadharmonika96@gmail.com" class="social-icon" aria-label="Mail">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+            <a href="tel:+919108701543" class="social-icon" aria-label="Phone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-primary);">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" id="footHome">Home</a></li>
+            <li><a href="about.html" id="footAbout">About</a></li>
+            <li><a href="projects.html" id="footProj">Projects</a></li>
+            <li><a href="education.html" id="footEduc">Education</a></li>
+            <li><a href="certification.html" id="footCerts">Certifications</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-primary);">Downloads</h4>
+          <ul class="footer-links">
+            <li><a href="assets/resume.docx" download id="footResume">Download Word Resume</a></li>
+            <li><a href="resume-view.html" id="footDigiResume">Print Digital Resume</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Monika G. All rights reserved.</p>
+        <p>Built with ❤️ &amp; Vanilla Web Technologies</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

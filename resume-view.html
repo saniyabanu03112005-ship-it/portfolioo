@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official digital resume of Monika G, BCA student. Interactive interface to review academic scoring, technical programming expertise, soft skills, and contact details with options to download or print-to-PDF.">
+  <meta name="keywords" content="Monika G Resume, Interactive Resume, PDF Resume, Word Resume, Software Engineer CV">
+  <meta name="author" content="Monika G">
+  <title>Digital Resume | Monika G</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Digital Resume Page Specific Styles */
+    .resume-page {
+      padding-top: 50px;
+      padding-bottom: 5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* Control Bar at Top */
+    .resume-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1rem 1.8rem;
+      margin-bottom: 2rem;
+      z-index: 10;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .control-group {
+      display: flex;
+      gap: 0.8rem;
+    }
+    
+    /* Resume Sheet Mockup */
+    .resume-sheet {
+      width: 100%;
+      max-width: 900px;
+      background: #0d121f;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 32% 68%;
+    }
+    
+    @media (max-width: 768px) {
+      .resume-sheet {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Sidebar Details */
+    .resume-sidebar {
+      background: #090c14;
+      border-right: 1px solid var(--border-color);
+      padding: 2.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+    
+    .resume-profile {
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding-bottom: 1.5rem;
+    }
+    
+    .resume-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      object-fit: cover;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .resume-name {
+      font-size: 1.5rem;
+      font-family: var(--font-heading);
+      color: var(--text-primary);
+    }
+    
+    .resume-title {
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-weight: 500;
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .sidebar-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color-hover);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .sidebar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .sidebar-list li {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      line-height: 1.4;
+    }
+    
+    .sidebar-list a {
+      color: var(--text-secondary);
+    }
+    
+    .sidebar-list a:hover {
+      color: var(--primary);
+    }
+    
+    /* Main Content Area */
+    .resume-main {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    
+    .resume-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    
+    .resume-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent-gradient);
+    }
+    
+    .objective-text {
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    
+    /* Timeline styles inside resume sheet */
+    .sheet-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .sheet-timeline-node {
+      border-left: 2px solid var(--border-color);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    
+    .sheet-timeline-node::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--secondary);
+    }
+    
+    .node-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+    }
+    
+    .node-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .node-date {
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-weight: 600;
+      font-family: var(--font-heading);
+    }
+    
+    .node-inst {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    
+    .node-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Skills Grid inside sheet */
+    .sheet-skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    @media (max-width: 550px) {
+      .sheet-skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .sheet-skill-group h4 {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .sheet-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    
+    .sheet-tag {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background decorations -->
+  <div class="blob blob-primary" style="top: 10%; left: 0%;"></div>
+  <div class="blob blob-secondary" style="bottom: 10%; right: 0%;"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="container resume-page">
+    
+    <!-- CONTROLS BAR (Hidden during Print) -->
+    <div class="resume-controls no-print animate-on-load">
+      <a href="index.html" class="btn btn-secondary" id="backHomeBtn" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Home
+      </a>
+      <div class="control-group">
+        <a href="assets/resume.docx" download class="btn btn-secondary" id="downloadDocxBtn" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Word File
+        </a>
+        <button onclick="window.print()" class="btn btn-primary" id="printPdfBtn" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print / Save PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- DIGITAL RESUME SHEET -->
+    <div class="resume-sheet animate-on-load delay-1" id="resumeContainer">
+      
+      <!-- SIDEBAR DETAILS -->
+      <aside class="resume-sidebar">
+        <!-- Profile info inside sheet -->
+        <div class="resume-profile">
+          <img src="assets/profile.jpg" alt="Monika G Headshot" class="resume-avatar">
+          <h2 class="resume-name">Monika G</h2>
+          <div class="resume-title">BCA Undergraduate</div>
+        </div>
+        
+        <!-- Contact details section -->
+        <div>
+          <h3 class="sidebar-section-title">Contact</h3>
+          <ul class="sidebar-list">
+            <li>
+              <span>📧</span>
+              <a href="mailto:gangadharmonika96@gmail.com">gangadharmonika96@gmail.com</a>
+            </li>
+            <li>
+              <span>📞</span>
+              <a href="tel:+919108701543">+91 91087 01543</a>
+            </li>
+            <li>
+              <span>📍</span>
+              <span>Tumkur, Karnataka, India</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Soft skills section -->
+        <div>
+          <h3 class="sidebar-section-title">Soft Skills</h3>
+          <ul class="sidebar-list">
+            <li><span>✓</span> Communication</li>
+            <li><span>✓</span> Problem Solving</li>
+            <li><span>✓</span> Time Management</li>
+            <li><span>✓</span> Adaptability &amp; Teamwork</li>
+          </ul>
+        </div>
+        
+        <!-- Languages section -->
+        <div>
+          <h3 class="sidebar-section-title">Languages</h3>
+          <ul class="sidebar-list">
+            <li><span>•</span> Kannada (Native)</li>
+            <li><span>•</span> English (Professional)</li>
+            <li><span>•</span> Hindi (Conversational)</li>
+            <li><span>•</span> Telugu (Conversational)</li>
+          </ul>
+        </div>
+        
+        <!-- Personal info section -->
+        <div>
+          <h3 class="sidebar-section-title">Personal Info</h3>
+          <ul class="sidebar-list" style="gap: 0.6rem;">
+            <li style="flex-direction:column; gap:0.1rem;">
+              <span style="font-weight:600; color:var(--text-primary); font-size:0.8rem; text-transform:uppercase;">Father's Name</span>
+              <span style="font-size:0.9rem;">Gangadhar TE</span>
+            </li>
+            <li style="flex-direction:column; gap:0.1rem; margin-top:0.3rem;">
+              <span style="font-weight:600; color:var(--text-primary); font-size:0.8rem; text-transform:uppercase;">Date of Birth</span>
+              <span style="font-size:0.9rem;">2006-05-08</span>
+            </li>
+            <li style="flex-direction:column; gap:0.1rem; margin-top:0.3rem;">
+              <span style="font-weight:600; color:var(--text-primary); font-size:0.8rem; text-transform:uppercase;">Nationality</span>
+              <span style="font-size:0.9rem;">Indian</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT SECTION -->
+      <main class="resume-main">
+        
+        <!-- Career Objective -->
+        <div>
+          <h3 class="resume-section-title">Career Objective</h3>
+          <p class="objective-text">
+            To make contribution in the organization with best of my ability and also to Develop new skills during the interaction to achieve new heights.
+          </p>
+        </div>
+        
+        <!-- Academic timeline -->
+        <div>
+          <h3 class="resume-section-title">Academic Qualifications</h3>
+          <div class="sheet-timeline">
+            <!-- BCA -->
+            <div class="sheet-timeline-node">
+              <div class="node-header">
+                <span class="node-title">Bachelor of Computer Applications (BCA)</span>
+                <span class="node-date">2023 - Present</span>
+              </div>
+              <div class="node-inst">Tumkur University</div>
+              <p class="node-desc">
+                Currently in the 5th semester. Acquired deep understanding of database concepts, software programming methodologies, and application design.
+                <br><strong>Grades:</strong> Sem 1: 67% | Sem 2: 70% | Sem 3: 70% | Sem 4: 61%
+              </p>
+            </div>
+            
+            <!-- PUC -->
+            <div class="sheet-timeline-node">
+              <div class="node-header">
+                <span class="node-title">Pre-University Course (PUC)</span>
+                <span class="node-date">Graduated 2023</span>
+              </div>
+              <div class="node-inst">Karnataka School Examination and Assessment Board</div>
+              <p class="node-desc">
+                Completed secondary higher board examinations in Karnataka. Obtained deep exposure to fundamental subjects, mathematics, and logic.
+                <br><strong>Score obtained:</strong> 71%
+              </p>
+            </div>
+            
+            <!-- SSLC -->
+            <div class="sheet-timeline-node">
+              <div class="node-header">
+                <span class="node-title">Secondary School Leaving Certificate (SSLC)</span>
+                <span class="node-date">Graduated 2021</span>
+              </div>
+              <div class="node-inst">Karnataka Education Examination Board</div>
+              <p class="node-desc">
+                Completed early high school secondary certification in Karnataka with robust scores in mathematics and language subjects.
+                <br><strong>Score obtained:</strong> 60.8%
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Technical details grid -->
+        <div>
+          <h3 class="resume-section-title">Technical Competencies</h3>
+          <div class="sheet-skills-grid">
+            <div class="sheet-skill-group">
+              <h4>Languages</h4>
+              <div class="sheet-tags">
+                <span class="sheet-tag">Python 3</span>
+                <span class="sheet-tag">C Programming</span>
+                <span class="sheet-tag">C# .NET</span>
+              </div>
+            </div>
+            <div class="sheet-skill-group">
+              <h4>Web &amp; Data</h4>
+              <div class="sheet-tags">
+                <span class="sheet-tag">HTML5 / CSS3</span>
+                <span class="sheet-tag">JavaScript (ES6)</span>
+                <span class="sheet-tag">Relational SQL</span>
+              </div>
+            </div>
+            <div class="sheet-skill-group" style="margin-top: 0.5rem;">
+              <h4>Concepts</h4>
+              <div class="sheet-tags">
+                <span class="sheet-tag">Data Structures</span>
+                <span class="sheet-tag">Operating Systems</span>
+                <span class="sheet-tag">CMA</span>
+              </div>
+            </div>
+            <div class="sheet-skill-group" style="margin-top: 0.5rem;">
+              <h4>Tools &amp; Others</h4>
+              <div class="sheet-tags">
+                <span class="sheet-tag">MS Excel</span>
+                <span class="sheet-tag">Database Basics</span>
+                <span class="sheet-tag">OOP Concepts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hobbies section -->
+        <div>
+          <h3 class="resume-section-title">Hobbies</h3>
+          <ul class="sidebar-list" style="flex-direction:row; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;">
+            <li style="flex-direction:column; gap:0.2rem;">
+              <span style="font-weight:600; color:var(--text-primary); font-size:0.9rem;">📚 Learning</span>
+              <span style="font-size:0.85rem; max-width:180px;">Acquiring new computer science skills</span>
+            </li>
+            <li style="flex-direction:column; gap:0.2rem;">
+              <span style="font-weight:600; color:var(--text-primary); font-size:0.9rem;">🎨 Sketching</span>
+              <span style="font-size:0.85rem; max-width:180px;">Creative drawing in free time</span>
+            </li>
+            <li style="flex-direction:column; gap:0.2rem;">
+              <span style="font-weight:600; color:var(--text-primary); font-size:0.9rem;">🎵 Music</span>
+              <span style="font-size:0.85rem; max-width:180px;">Listening to songs to boost focus</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Declaration inside sheet -->
+        <div style="margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+          <p style="font-style: italic; font-size: 0.85rem; color: var(--text-secondary); text-align: justify; line-height: 1.4;">
+            <strong>Declaration:</strong> I hereby declare that the above information given by me is true to best of my knowledge.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+              <p>Place: Tumkur, Karnataka</p>
+              <p>Date: May 27, 2026</p>
+            </div>
+            <div style="text-align: center; border-top: 1px dashed var(--text-secondary); padding: 0.3rem 1.5rem 0; font-family: var(--font-heading); font-size: 0.95rem; font-weight:600; color: var(--text-primary);">
+              (MONIKA G)
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+  
+</body>
+</html>
